@@ -1,4 +1,0 @@
-eclipse.preferences.version=1
-property.events.codeType=2
-property.events.stubCreate=true
-stubName=${event_name}${Component_name}
