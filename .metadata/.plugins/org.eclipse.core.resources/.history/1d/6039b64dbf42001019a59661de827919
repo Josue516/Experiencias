@@ -1,0 +1,73 @@
+package ventanas;
+
+import java.awt.EventQueue;
+import java.awt.Graphics;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+public class Principal extends JFrame {
+	
+	FondoPanel fondo = new FondoPanel();
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Principal frame = new Principal();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Principal() {
+
+		//ESTO PARA EL FONDO
+		this.setContentPane(fondo);
+		fondo.setLayout(null);
+		//ACABO EL FONDO
+		
+		setTitle("REGISTRO DE COMBUSTIBLE");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 600, 390);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setLocationRelativeTo(null);//PARA CENTRAR EL JFRAME
+		getContentPane().setLayout(null);
+	}
+	//FONDO
+	public class FondoPanel extends JPanel{
+		private static final long serialVersionUID = 1L;
+		private Image imagen; //DECLARA LA VARIABLE IMAGEN
+		//CONSTRUCTOR DEL FONDO
+		public FondoPanel() {
+			ImageIcon icono = new ImageIcon(getClass().getResource("/imagenes/Fondo.png"));
+			imagen = icono.getImage();
+		}
+		
+		@Override
+	    protected void paintComponent(Graphics g) {
+	        if (imagen != null) {
+	            g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
+	        }//SI LA IMAGEN SE CARGA ESTA SE DIBUJA DESDE LA ESQUINA SUPERIOR (0,0)
+	        //Y LA ESTIRA AL TAMA�O COMPLETO DEL PANEL (GETWIDTG, GETHWIGHT)
+
+	        setOpaque(false); //HACE QUE EL PANEL SEA TRANSPARENTE Y SOLO SE VEA LA IMAGEN
+	        super.paintComponent(g);//PARA EVITAR FALLAS VISUALES/PARPADEOS Y MANTIENE LOS COMPONENTES
+	    }
+	}
+}

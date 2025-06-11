@@ -1,0 +1,58 @@
+package ventanas;
+
+import java.awt.EventQueue;
+
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import javax.swing.ImageIcon;
+
+public class Loguin extends JDialog {
+
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Loguin dialog = new Loguin();
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public Loguin() {
+		setTitle("LOGIN");
+		setBounds(100, 100, 500, 400);
+		getContentPane().setLayout(null);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setIcon(new ImageIcon(Loguin.class.getResource("/imagenes/user_login.png")));
+		lblNewLabel_2.setBounds(161, 0, 183, 194);
+		getContentPane().add(lblNewLabel_2);
+		
+		JLabel lblNewLabel = new JLabel("INICIAR SESION");
+		lblNewLabel.setBounds(190, 195, 140, 25);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		getContentPane().add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setIcon(new ImageIcon(Loguin.class.getResource("/imagenes/fondo_loguin.png")));
+		lblNewLabel_1.setBounds(0, 0, 484, 361);
+		getContentPane().add(lblNewLabel_1);
+
+	}
+}
