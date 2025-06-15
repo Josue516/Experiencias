@@ -68,37 +68,37 @@ public class Loguin extends JDialog implements ActionListener {
 		chcVer.setBackground(new Color(66, 115, 170));
 		chcVer.setForeground(new Color(0, 0, 0));
 		chcVer.setFont(new Font("Tahoma", Font.ITALIC, 12));
-		chcVer.setBounds(356, 215, 122, 23);
+		chcVer.setBounds(356, 209, 122, 23);
 		getContentPane().add(chcVer);
 		
 		txtContraseña = new JPasswordField();
-		txtContraseña.setBounds(200, 216, 150, 20);
+		txtContraseña.setBounds(200, 210, 150, 20);
 		getContentPane().add(txtContraseña);
 		txtContraseña.setColumns(10);
 		
 		txtUsuario = new JTextField();
-		txtUsuario.setBounds(200, 180, 150, 20);
+		txtUsuario.setBounds(200, 165, 150, 20);
 		getContentPane().add(txtUsuario);
 		txtUsuario.setColumns(10);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Contraseña  :");
 		lblNewLabel_3_1.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_3_1.setBounds(90, 213, 120, 25);
+		lblNewLabel_3_1.setBounds(90, 207, 120, 25);
 		getContentPane().add(lblNewLabel_3_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("Usuario         :");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_3.setBounds(90, 177, 120, 25);
+		lblNewLabel_3.setBounds(90, 162, 120, 25);
 		getContentPane().add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setIcon(new ImageIcon(Loguin.class.getResource("/imagenes/user_login.png")));
-		lblNewLabel_2.setBounds(161, 0, 183, 117);
+		lblNewLabel_2.setBounds(161, 0, 183, 105);
 		getContentPane().add(lblNewLabel_2);
 		
 		JLabel lblNewLabel = new JLabel("INICIAR SESION");
-		lblNewLabel.setBounds(185, 131, 140, 25);
+		lblNewLabel.setBounds(185, 116, 140, 25);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(lblNewLabel);

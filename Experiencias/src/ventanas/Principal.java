@@ -25,6 +25,12 @@ public class Principal extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	private JMenuItem mntmSalir;
 	private JMenuItem mntmConsultar;
+	private JMenuItem mntmActualizar;
+	private JMenuItem mntmRegistrarOperacion;
+	private JMenuItem mntmDescargaProgramada;
+	
+	//DATOS PUBLICOS PARA LOS DEMAS JDIALOG
+	public static int Galones = 8000;
 
 	/**
 	 * Launch the application.
@@ -84,16 +90,19 @@ public class Principal extends JFrame implements ActionListener {
 		mntmConsultar.addActionListener(this);
 		mnInventario.add(mntmConsultar);
 		
-		JMenuItem mntmActualizar = new JMenuItem("Actualizar Stock");
+		mntmActualizar = new JMenuItem("Actualizar Stock");
+		mntmActualizar.addActionListener(this);
 		mnInventario.add(mntmActualizar);
 		
 		JMenu mnOperaciones = new JMenu("Operaciones");
 		menuBar.add(mnOperaciones);
 		
-		JMenuItem mntmRegistrarArea = new JMenuItem("Registrar por Área");
-		mnOperaciones.add(mntmRegistrarArea);
+		mntmRegistrarOperacion = new JMenuItem("Registrar por Operación");
+		mntmRegistrarOperacion.addActionListener(this);
+		mnOperaciones.add(mntmRegistrarOperacion);
 		
-		JMenuItem mntmDescargaProgramada = new JMenuItem("Descarga Programada");
+		mntmDescargaProgramada = new JMenuItem("Administar Operaciones/Rutas");
+		mntmDescargaProgramada.addActionListener(this);
 		mnOperaciones.add(mntmDescargaProgramada);
 		
 		JMenu mnReportes = new JMenu("Reportes");
@@ -125,6 +134,15 @@ public class Principal extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == mntmDescargaProgramada) {
+			actionPerformedMntmDescargaProgramada(e);
+		}
+		if (e.getSource() == mntmRegistrarOperacion) {
+			actionPerformedMntmRegistrarOperacion(e);
+		}
+		if (e.getSource() == mntmActualizar) {
+			actionPerformedMntmActualizar(e);
+		}
 		if (e.getSource() == mntmConsultar) {
 			actionPerformedMntmConsultar(e);
 		}
@@ -137,6 +155,28 @@ public class Principal extends JFrame implements ActionListener {
 					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] {"Sí", "No"}, null);
 			if (valor == 0) System.exit(0);
 		}
+	//CONSULTAR STOCK GASOLINA
 	protected void actionPerformedMntmConsultar(ActionEvent e) {
+		ConsulStock dc = new ConsulStock();
+		dc.setLocationRelativeTo(this);
+		dc.setVisible(true);
+	}
+	//ACTUALIZAR STOCK GASOLINA
+	protected void actionPerformedMntmActualizar(ActionEvent e) {
+		ActualizarStock dc = new ActualizarStock();
+		dc.setLocationRelativeTo(this);
+		dc.setVisible(true);
+	}
+	//REGISTRO DE OPERACIONES
+	protected void actionPerformedMntmRegistrarOperacion(ActionEvent e) {
+		RegisOperacion dc = new RegisOperacion();
+		dc.setLocationRelativeTo(this);
+		dc.setVisible(true);
+	}
+	//ADMINISTRAR OPERACIONES/RUTAS
+	protected void actionPerformedMntmDescargaProgramada(ActionEvent e) {
+		AdmiOperaciones dc = new AdmiOperaciones();
+		dc.setLocationRelativeTo(this);
+		dc.setVisible(true);
 	}
 }
