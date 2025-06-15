@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.regex.Pattern;
@@ -75,6 +76,9 @@ public class ActualizarStock extends JDialog implements ActionListener {
 		btnNewButton.addActionListener(this);
 		btnNewButton.setBounds(90, 62, 100, 23);
 		getContentPane().add(btnNewButton);
+		//PARA QUE EL TXT NO APAREZCA SELECCIONADO AUTOMATICAMENTE
+		SwingUtilities.invokeLater(() -> {btnNewButton.requestFocusInWindow(); // Puedes cambiar por cualquier otro componente
+		});
 	}
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnCancelar) {

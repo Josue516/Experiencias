@@ -7,6 +7,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -68,6 +69,10 @@ public class ConsulStock extends JDialog implements ActionListener {
 		btnNewButton.addActionListener(this);
 		btnNewButton.setBounds(160, 59, 89, 23);
 		getContentPane().add(btnNewButton);
+		
+		//PARA QUE NO APAREZCA SELECCIONADO en txt
+		SwingUtilities.invokeLater(() -> {btnNewButton.requestFocusInWindow(); // Puedes cambiar por cualquier otro componente
+		});
 
 	}
 	public void actionPerformed(ActionEvent e) {
