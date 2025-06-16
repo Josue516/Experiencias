@@ -109,14 +109,21 @@ public class RegisOperacion extends JDialog implements ActionListener {
 		scrollPane.setBounds(10, 180, 594, 170);
 		getContentPane().add(scrollPane);
 		
+		//LOS JTABLE YA NO SERAN EDITABLES
 		tablaOperaciones = new JTable();
-		tablaOperaciones.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"OPERACI\u00D3N", "UNIDADES", "RUTAS", "GL/UNIDAD", "GALONES TOTALES"
+		tablaOperaciones.setModel(new DefaultTableModel(new Object[][] {},
+		new String[] {"OPERACI\u00D3N", "UNIDADES", "RUTAS", "GL/UNIDAD", "GALONES TOTALES"}) {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+			boolean[] columnEditables = new boolean[] {
+				false, false, false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
 			}
-		));
+		});
 		scrollPane.setViewportView(tablaOperaciones);
 		
 		btnAñadir = new JButton("Añadir operación");
