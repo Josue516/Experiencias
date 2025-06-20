@@ -112,10 +112,9 @@ public class Loguin extends JDialog implements ActionListener {
 		//USUARIOS VALIDOS
 				usuarios = new HashMap<>();
 			    usuarios.put("josue", "1234");
-			    usuarios.put("juan", "qwerty");
-			    usuarios.put("gerald", "abc123");
-			    usuarios.put("patrick", "4321");
-			    usuarios.put("abraham", "almuerzo");
+			    usuarios.put("yancarlos", "qwerty");
+			    usuarios.put("alexandro", "abc123");
+			    usuarios.put("yuly", "4321");
 	}
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnCerrar) {

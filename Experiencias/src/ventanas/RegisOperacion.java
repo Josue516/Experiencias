@@ -54,6 +54,7 @@ public class RegisOperacion extends JDialog implements ActionListener {
 	 * Create the dialog.
 	 */
 	public RegisOperacion() {
+		setResizable(false);
 		setTitle("REGISTRAR OPERACIONES");
 		setBounds(100, 100, 630, 400);
 		getContentPane().setLayout(null);
@@ -215,7 +216,7 @@ public class RegisOperacion extends JDialog implements ActionListener {
 	            }
 	        }
 	    } catch (IOException e) {
-	        JOptionPane.showMessageDialog(null, "Error al leer Operaciones.txt: " + e.getMessage());
+	        JOptionPane.showMessageDialog(this, "Error al leer Operaciones.txt: " + e.getMessage());
 	    }
 	}
 	//METODO PARA GUARDAR OPERACIONES EN ARCHIVO
@@ -232,7 +233,7 @@ public class RegisOperacion extends JDialog implements ActionListener {
 	            pw.println(linea.toString());
 	        }
 	    } catch (IOException e) {
-	        JOptionPane.showMessageDialog(null, "Error al guardar en Operaciones.txt: " + e.getMessage());
+	        JOptionPane.showMessageDialog(this, "Error al guardar en Operaciones.txt: " + e.getMessage());
 	    }
 	}
 	//BOTON PARA ELIMINAR OPERACION
@@ -261,8 +262,7 @@ public class RegisOperacion extends JDialog implements ActionListener {
 	            this,
 	            "Por favor, selecciona una fila para eliminar.",
 	            "Ninguna fila seleccionada",
-	            JOptionPane.WARNING_MESSAGE
-	        );
+	            JOptionPane.WARNING_MESSAGE);
 	    }
 	}
 }

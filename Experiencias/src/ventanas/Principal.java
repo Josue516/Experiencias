@@ -30,7 +30,8 @@ public class Principal extends JFrame implements ActionListener {
 	private JMenuItem mntmDescargaProgramada;
 	
 	//DATOS PUBLICOS PARA LOS DEMAS JDIALOG
-	public static int Galones = 8000;
+	public static double Galones = 8000.0;
+	private JMenuItem mntmGenerarReportes;
 
 	/**
 	 * Launch the application.
@@ -57,7 +58,7 @@ public class Principal extends JFrame implements ActionListener {
 		fondo.setLayout(null);
 		//ACABO EL FONDO
 		
-		setTitle("REGISTRO DE COMBUSTIBLE");
+		setTitle("SIPROC");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 390);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);//PARA MAXIMIZAR
@@ -69,7 +70,6 @@ public class Principal extends JFrame implements ActionListener {
 		//LOGO
 		ImageIcon icon = new ImageIcon(getClass().getResource("/imagenes/Logo.png")); // Ruta desde src
 		setIconImage(icon.getImage());
-		getContentPane().setLayout(null);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -108,7 +108,8 @@ public class Principal extends JFrame implements ActionListener {
 		JMenu mnReportes = new JMenu("Reportes");
 		menuBar.add(mnReportes);
 		
-		JMenuItem mntmGenerarReportes = new JMenuItem("Generar reportes");
+		mntmGenerarReportes = new JMenuItem("Generar reportes");
+		mntmGenerarReportes.addActionListener(this);
 		mnReportes.add(mntmGenerarReportes);
 	}
 	//FONDO
@@ -134,6 +135,9 @@ public class Principal extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == mntmGenerarReportes) {
+			actionPerformedMntmGenerarReportes(e);
+		}
 		if (e.getSource() == mntmDescargaProgramada) {
 			actionPerformedMntmDescargaProgramada(e);
 		}
@@ -176,6 +180,12 @@ public class Principal extends JFrame implements ActionListener {
 	//ADMINISTRAR OPERACIONES/RUTAS
 	protected void actionPerformedMntmDescargaProgramada(ActionEvent e) {
 		AdmiOperaciones dc = new AdmiOperaciones();
+		dc.setLocationRelativeTo(this);
+		dc.setVisible(true);
+	}
+	//GENERAR REPORTES
+	protected void actionPerformedMntmGenerarReportes(ActionEvent e) {
+		GenerarReportes dc = new GenerarReportes();
 		dc.setLocationRelativeTo(this);
 		dc.setVisible(true);
 	}

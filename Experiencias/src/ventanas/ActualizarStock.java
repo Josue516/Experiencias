@@ -89,7 +89,7 @@ public class ActualizarStock extends JDialog implements ActionListener {
 		}
 	}
 	//METODO PARA GUARDAR LOS DATOS CAMBIADOS
-	private void guardarDato(int gasolina) {
+	private void guardarDato(double gasolina) {
 		Principal.Galones=gasolina;
 	}
 	//PATRON PARA EVITAR QUE INTRODUZCAN PALABRAS Y SIMBOLOS
@@ -110,7 +110,7 @@ public class ActualizarStock extends JDialog implements ActionListener {
 			mostrarError("Debe ingresar un numero valido.");
 			return;
 		}
-		int gasolina = Integer.parseInt(galones);
+		double gasolina = Double.parseDouble(galones);
 		if (gasolina <= 0) {
         	//Si el numero es igual o menor a cero se muestra el siguiente mensaje
             mostrarAdventencia("El campo debe ser mayor que 0.");

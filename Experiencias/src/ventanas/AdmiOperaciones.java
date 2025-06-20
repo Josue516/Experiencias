@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -56,6 +57,7 @@ public class AdmiOperaciones extends JDialog implements ActionListener {
 	 * Create the dialog.
 	 */
 	public AdmiOperaciones() {
+		setResizable(false);
 		setTitle("ADMINISTRAR OPERACIONES Y RUTAS");
 		setBounds(100, 100, 550, 380);
 		getContentPane().setLayout(null);
@@ -75,6 +77,11 @@ public class AdmiOperaciones extends JDialog implements ActionListener {
 		txtOperacion.setBounds(150, 12, 140, 20);
 		getContentPane().add(txtOperacion);
 		txtOperacion.setColumns(10);
+		
+		//LOGO
+		ImageIcon icon = new ImageIcon(getClass().getResource("/imagenes/Logo.png")); // Ruta desde src
+		setIconImage(icon.getImage());
+		getContentPane().setLayout(null);
 		
 		//PARA QUE EL TXT NO APAREZCA SELECCIONADO AUTOMATICAMENTE
 		SwingUtilities.invokeLater(() -> {btnAgregarOperacion.requestFocusInWindow(); // Puedes cambiar por cualquier otro componente
