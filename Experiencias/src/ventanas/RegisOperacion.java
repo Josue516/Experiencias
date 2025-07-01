@@ -32,6 +32,7 @@ public class RegisOperacion extends JDialog implements ActionListener {
 	private JButton btnAñadir;
 	private JButton btnEliminarOperacion;
 	private JComboBox<String> cboOperacion;
+	private JButton btnEliminarTodo;
 
 	/**
 	 * Launch the application.
@@ -141,6 +142,11 @@ public class RegisOperacion extends JDialog implements ActionListener {
 		cargarOperacionesDesdeArchivo();
 		cargarOpcionesDesdeRecurso("datos/Rutas.txt", cboRutas);
 		cargarOpcionesDesdeRecurso("datos/Operaciones.txt", cboOperacion);
+		
+		btnEliminarTodo = new JButton("Eliminar Todo");
+		btnEliminarTodo.addActionListener(this);
+		btnEliminarTodo.setBounds(449, 114, 140, 25);
+		getContentPane().add(btnEliminarTodo);
 	}
 	//METODO PARA QUE LO QUE ESTE ESCRITO EN LOS TXT SEA BUSCADO Y LEIDO CORRECTAMENTE
 	private void cargarOpcionesDesdeRecurso(String ruta, JComboBox<String> combo) {
@@ -158,6 +164,9 @@ public class RegisOperacion extends JDialog implements ActionListener {
         }
     }
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnEliminarTodo) {
+			actionPerformedBtnEliminarTodo(e);
+		}
 		if (e.getSource() == btnEliminarOperacion) {
 			actionPerformedBtnEliminarOperacion(e);
 		}
@@ -264,5 +273,27 @@ public class RegisOperacion extends JDialog implements ActionListener {
 	            "Ninguna fila seleccionada",
 	            JOptionPane.WARNING_MESSAGE);
 	    }
+	}
+	protected void actionPerformedBtnEliminarTodo(ActionEvent e) {
+		 DefaultTableModel model = (DefaultTableModel) tablaOperaciones.getModel();
+	        
+	        if (model.getRowCount() == 0) {
+	            // No hay filas
+	            JOptionPane.showMessageDialog(this, "No hay filas para eliminar.", 
+	                                          "Aviso", JOptionPane.INFORMATION_MESSAGE);
+	        } else {
+	            // Confirmar antes de eliminar
+	            int respuesta = JOptionPane.showConfirmDialog(this, 
+	                    "¿Está seguro de que desea eliminar todas las filas?", 
+	                    "Confirmar eliminación", 
+	                    JOptionPane.YES_NO_OPTION, 
+	                    JOptionPane.WARNING_MESSAGE);
+	            
+	            if (respuesta == JOptionPane.YES_OPTION) {
+	                model.setRowCount(0);  // Elimina todas las filas
+	                JOptionPane.showMessageDialog(this, "Todas las filas han sido eliminadas.",
+	                                              "Operación exitosa", JOptionPane.INFORMATION_MESSAGE);
+	            }
+	        }
 	}
 }
