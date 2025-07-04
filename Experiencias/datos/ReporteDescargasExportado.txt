@@ -1,0 +1,8 @@
+FECHA | CANTIDAD | PROVEEDOR | RECEPCIONO
+------------------------------------------------------------
+01/07/2025 | 1000.0 | PETROPERÚ | Juan Pérez
+01/07/2025 | 5000.0 | REPSOL | Ana Torres
+02/07/2025 | 7000.0 | NUMAY | Pedro García
+03/07/2025 | 3000.0 | PRIMAX | Lucía Fernández
+03/07/2025 | 1000.0 | REPSOL | Juan Pérez
+04/07/2025 | 9000.0 | PETROPERÚ | Carlos Ruiz
