@@ -28,12 +28,19 @@ public class Principal extends JFrame implements ActionListener {
 	private JMenuItem mntmActualizar;
 	private JMenuItem mntmRegistrarOperacion;
 	private JMenuItem mntmDescargaProgramada;
+<<<<<<< HEAD
 	private JMenuItem mntmConsumoProyectado;
 	private JMenuItem mntmDescargasCombust;
 	private JMenu mnAyuda;
 	private JMenuItem mntmAcercaDe;
 	
 	public static double Galones = 3000.0;
+=======
+	
+	//DATOS PUBLICOS PARA LOS DEMAS JDIALOG
+	public static double Galones = 8000.0;
+	private JMenuItem mntmGenerarReportes;
+>>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 
 	/**
 	 * Launch the application.
@@ -110,6 +117,7 @@ public class Principal extends JFrame implements ActionListener {
 		JMenu mnReportes = new JMenu("Reportes");
 		menuBar.add(mnReportes);
 		
+<<<<<<< HEAD
 		mntmConsumoProyectado = new JMenuItem("Consumo Proyectado");
 		mntmConsumoProyectado.addActionListener(this);
 		mnReportes.add(mntmConsumoProyectado);
@@ -124,6 +132,11 @@ public class Principal extends JFrame implements ActionListener {
 		mntmAcercaDe = new JMenuItem("Acerca de...");
 		mntmAcercaDe.addActionListener(this);
 		mnAyuda.add(mntmAcercaDe);
+=======
+		mntmGenerarReportes = new JMenuItem("Generar reportes");
+		mntmGenerarReportes.addActionListener(this);
+		mnReportes.add(mntmGenerarReportes);
+>>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 	}
 	//FONDO
 	public class FondoPanel extends JPanel{
@@ -148,6 +161,7 @@ public class Principal extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
 		if (e.getSource() == mntmAcercaDe) {
 			actionPerformedMntmAcercaDe(e);
 		}
@@ -156,6 +170,10 @@ public class Principal extends JFrame implements ActionListener {
 		}
 		if (e.getSource() == mntmConsumoProyectado) {
 			actionPerformedMntmReporteConsumos(e);
+=======
+		if (e.getSource() == mntmGenerarReportes) {
+			actionPerformedMntmGenerarReportes(e);
+>>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 		}
 		if (e.getSource() == mntmDescargaProgramada) {
 			actionPerformedMntmDescargaProgramada(e);
@@ -203,6 +221,7 @@ public class Principal extends JFrame implements ActionListener {
 		dc.setVisible(true);
 	}
 	//GENERAR REPORTES
+<<<<<<< HEAD
 	protected void actionPerformedMntmReporteConsumos(ActionEvent e) {
 		ReporteConsumos rc = new ReporteConsumos();
 		rc.setLocationRelativeTo(this);
@@ -217,5 +236,11 @@ public class Principal extends JFrame implements ActionListener {
 		AcercaDe ad = new AcercaDe();
 		ad.setLocationRelativeTo(this);
 		ad.setVisible(true);
+=======
+	protected void actionPerformedMntmGenerarReportes(ActionEvent e) {
+		GenerarReportes dc = new GenerarReportes();
+		dc.setLocationRelativeTo(this);
+		dc.setVisible(true);
+>>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 	}
 }

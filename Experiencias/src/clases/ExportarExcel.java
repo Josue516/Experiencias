@@ -348,6 +348,7 @@ public class ExportarExcel {
         if (result == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
             String filePath = file.getAbsolutePath();
+<<<<<<< HEAD
             
             // Asegurar extensión .xlsx
             if (!filePath.toLowerCase().endsWith(".xlsx")) {
@@ -356,6 +357,18 @@ public class ExportarExcel {
             
             try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
                 workbook.write(fileOut);
+=======
+
+            if (!filePath.toLowerCase().endsWith(".xlsx")) {
+                filePath += ".xlsx";
+            }
+
+            try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
+                workbook.write(fileOut);
+                // Mostrar mensaje de éxito solo si se guarda correctamente
+                JOptionPane.showMessageDialog(null, "Archivo Excel exportado exitosamente!", 
+                    "Éxito", JOptionPane.INFORMATION_MESSAGE);
+>>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
             }
         }
         
@@ -365,7 +378,10 @@ public class ExportarExcel {
     public static void exportar() {
         ExportarExcel exporter = new ExportarExcel();
         exporter.exportarDatos();
+<<<<<<< HEAD
         JOptionPane.showMessageDialog(null, "Archivo Excel exportado exitosamente!", 
                 "Éxito", JOptionPane.INFORMATION_MESSAGE);
+=======
+>>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
     }
 }

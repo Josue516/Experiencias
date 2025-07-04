@@ -11,6 +11,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.JButton;
+<<<<<<< HEAD
 import javax.swing.JComboBox;
 
 import java.awt.event.ActionListener;
@@ -37,6 +38,17 @@ public class ActualizarStock extends JDialog implements ActionListener {
 	private JLabel lblGl_2;
 	private JLabel lblStockInicial;
 	private JLabel lblGl;
+=======
+import java.awt.event.ActionListener;
+import java.util.regex.Pattern;
+import java.awt.event.ActionEvent;
+
+public class ActualizarStock extends JDialog implements ActionListener {
+
+	private static final long serialVersionUID = 1L;
+	private JTextField txtGasolina;
+	private JButton btnNewButton;
+>>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 
 	/**
 	 * Launch the application.
@@ -59,16 +71,29 @@ public class ActualizarStock extends JDialog implements ActionListener {
 	 * Create the dialog.
 	 */
 	public ActualizarStock() {
+<<<<<<< HEAD
 		getContentPane().setBackground(new Color(255, 248, 220));
 		setTitle("ACTUALIZAR STOCK");
 		setBounds(100, 100, 517, 289);
 		getContentPane().setLayout(null);
 		
+=======
+		setTitle("ACTUALIZAR STOCK");
+		setBounds(100, 100, 440, 150);
+		getContentPane().setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Actualizar Gasolina :");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel.setBounds(20, 25, 149, 25);
+		getContentPane().add(lblNewLabel);
+		
+>>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 		//LOGO
 		ImageIcon icon = new ImageIcon(getClass().getResource("/imagenes/Logo.png")); // Ruta desde src
 		setIconImage(icon.getImage());
 		getContentPane().setLayout(null);
 		
+<<<<<<< HEAD
 		lblStockInicial = new JLabel("Stock Inicial :");
 		lblStockInicial.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblStockInicial.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -196,6 +221,47 @@ public class ActualizarStock extends JDialog implements ActionListener {
 	private static final Pattern NUM_PATTERN = Pattern.compile("^[0-9]+(\\.[0-9]+)?$");
 	private JLabel lblNewLabel;
 
+=======
+		txtGasolina = new JTextField();
+		txtGasolina.setBounds(179, 29, 130, 20);
+		getContentPane().add(txtGasolina);
+		txtGasolina.setColumns(10);
+		txtGasolina.setText(Principal.Galones+"");
+		
+		JLabel lblGl = new JLabel("GL.");
+		lblGl.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblGl.setBounds(313, 25, 31, 25);
+		getContentPane().add(lblGl);
+		
+		btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(this);
+		btnCancelar.setBounds(221, 61, 100, 23);
+		getContentPane().add(btnCancelar);
+		
+		btnNewButton = new JButton("Actualizar");
+		btnNewButton.addActionListener(this);
+		btnNewButton.setBounds(90, 62, 100, 23);
+		getContentPane().add(btnNewButton);
+		//PARA QUE EL TXT NO APAREZCA SELECCIONADO AUTOMATICAMENTE
+		SwingUtilities.invokeLater(() -> {btnNewButton.requestFocusInWindow(); // Puedes cambiar por cualquier otro componente
+		});
+	}
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnCancelar) {
+			actionPerformedBtnCancelar(e);
+		}
+		if (e.getSource() == btnNewButton) {
+			actionPerformedBtnNewButton(e);
+		}
+	}
+	//METODO PARA GUARDAR LOS DATOS CAMBIADOS
+	private void guardarDato(double gasolina) {
+		Principal.Galones=gasolina;
+	}
+	//PATRON PARA EVITAR QUE INTRODUZCAN PALABRAS Y SIMBOLOS
+	private static final Pattern NUM_PATTERN = Pattern.compile("^[0-9]+(\\.[0-9]+)?$");
+	private JButton btnCancelar;
+>>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 	//MENSAJE QUE APARECE EN CASO DE ERROR
 	private void mostrarError(String msg) {
 	    JOptionPane.showMessageDialog(this, msg, "Error de formato", JOptionPane.ERROR_MESSAGE);
@@ -205,6 +271,7 @@ public class ActualizarStock extends JDialog implements ActionListener {
 	    JOptionPane.showMessageDialog(this, msg, "Valor invalido", JOptionPane.WARNING_MESSAGE);
 	}
 	//BOTON GUARDAR
+<<<<<<< HEAD
 	protected void actionPerformedBtnActualizar(ActionEvent e) {
 		String stock = txtStockInicial.getText().trim();
 		String descarga = (String) cboDescarga.getSelectedItem();
@@ -269,5 +336,29 @@ public class ActualizarStock extends JDialog implements ActionListener {
 	    } catch (IOException e) {
 	        JOptionPane.showMessageDialog(this, "No se pudo guardar el registro de descarga.");
 	    }
+=======
+	protected void actionPerformedBtnNewButton(ActionEvent e) {
+		String galones = txtGasolina.getText().trim();
+		if (!NUM_PATTERN.matcher(galones).matches()) {
+			mostrarError("Debe ingresar un numero valido.");
+			return;
+		}
+		double gasolina = Double.parseDouble(galones);
+		if (gasolina <= 0) {
+        	//Si el numero es igual o menor a cero se muestra el siguiente mensaje
+            mostrarAdventencia("El campo debe ser mayor que 0.");
+            return;//DETIENE LA EJECUCION DEL CODIGO Y NO SE GUARDA NADA
+        }
+		guardarDato(gasolina);
+		JOptionPane.showMessageDialog(this,
+		        "Datos guardados correctamente.",
+		        "Ventana correcta",
+		        JOptionPane.INFORMATION_MESSAGE);
+		dispose();
+	}
+	//BOTON CANCELAR
+	protected void actionPerformedBtnCancelar(ActionEvent e) {
+		dispose();
+>>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 	}
 }

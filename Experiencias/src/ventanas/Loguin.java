@@ -54,13 +54,19 @@ public class Loguin extends JDialog implements ActionListener {
 		getContentPane().setLayout(null);
 		
 		btnCerrar = new JButton("Cerrar");
+<<<<<<< HEAD
 		btnCerrar.setBackground(new Color(240, 128, 128));
+=======
+>>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 		btnCerrar.addActionListener(this);
 		btnCerrar.setBounds(260, 260, 120, 25);
 		getContentPane().add(btnCerrar);
 		
 		btnSesion = new JButton("Iniciar Sesión");
+<<<<<<< HEAD
 		btnSesion.setBackground(new Color(30, 144, 255));
+=======
+>>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 		btnSesion.addActionListener(this);
 		btnSesion.setBounds(115, 260, 120, 25);
 		getContentPane().add(btnSesion);
@@ -113,10 +119,17 @@ public class Loguin extends JDialog implements ActionListener {
 		
 		//USUARIOS VALIDOS
 				usuarios = new HashMap<>();
+<<<<<<< HEAD
 			    usuarios.put("josue", "josue");
 			    usuarios.put("yancarlos", "yancarlos");
 			    usuarios.put("alexandro", "alexandro");
 			    usuarios.put("yuly", "yuly");
+=======
+			    usuarios.put("josue", "1234");
+			    usuarios.put("yancarlos", "qwerty");
+			    usuarios.put("alexandro", "abc123");
+			    usuarios.put("yuly", "4321");
+>>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 	}
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnCerrar) {
