@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-QUAVI
->>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 MINA
 GLORIA
 TRÁFICO

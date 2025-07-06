@@ -22,10 +22,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.table.DefaultTableModel;
-<<<<<<< HEAD
 import java.awt.Color;
-=======
->>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 
 public class AdmiOperaciones extends JDialog implements ActionListener {
 
@@ -39,11 +36,8 @@ public class AdmiOperaciones extends JDialog implements ActionListener {
 	private JButton btnAceptar;
 	private JButton btnCancelar;
 	private JButton btnEliminar;
-<<<<<<< HEAD
 	private JScrollPane scrollPane;
 	private JScrollPane scrollPane_1;
-=======
->>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 
 	/**
 	 * Launch the application.
@@ -66,10 +60,7 @@ public class AdmiOperaciones extends JDialog implements ActionListener {
 	 * Create the dialog.
 	 */
 	public AdmiOperaciones() {
-<<<<<<< HEAD
 		getContentPane().setBackground(new Color(255, 248, 220));
-=======
->>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 		setResizable(false);
 		setTitle("ADMINISTRAR OPERACIONES Y RUTAS");
 		setBounds(100, 100, 550, 380);
@@ -107,64 +98,42 @@ public class AdmiOperaciones extends JDialog implements ActionListener {
 		getContentPane().add(txtRuta);
 		
 		btnAgregarOperacion = new JButton("Agregar Operación");
-<<<<<<< HEAD
 		btnAgregarOperacion.setBackground(new Color(100, 149, 237));
-=======
->>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 		btnAgregarOperacion.addActionListener(this);
 		btnAgregarOperacion.setBounds(350, 11, 160, 23);
 		getContentPane().add(btnAgregarOperacion);
 		
 		btnAgregarRuta = new JButton("Agregar Ruta");
-<<<<<<< HEAD
 		btnAgregarRuta.setBackground(new Color(100, 149, 237));
-=======
->>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 		btnAgregarRuta.addActionListener(this);
 		btnAgregarRuta.setBounds(350, 43, 160, 23);
 		getContentPane().add(btnAgregarRuta);
 		
 		btnEliminar = new JButton("Eliminar");
-<<<<<<< HEAD
 		btnEliminar.setBackground(new Color(240, 128, 128));
-=======
->>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 		btnEliminar.addActionListener(this);
 		btnEliminar.setBounds(350, 77, 160, 23);
 		getContentPane().add(btnEliminar);
 		
 		btnAceptar = new JButton("Aceptar");
-<<<<<<< HEAD
 		btnAceptar.setBackground(new Color(100, 149, 237));
-=======
->>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 		btnAceptar.addActionListener(this);
 		btnAceptar.setBounds(40, 90, 89, 23);
 		getContentPane().add(btnAceptar);
 		
 		btnCancelar = new JButton("Cancelar");
-<<<<<<< HEAD
 		btnCancelar.setBackground(new Color(240, 128, 128));
-=======
->>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 		btnCancelar.addActionListener(this);
 		btnCancelar.setBounds(150, 90, 89, 23);
 		getContentPane().add(btnCancelar);
 		
-<<<<<<< HEAD
 		scrollPane = new JScrollPane();
-=======
-		JScrollPane scrollPane = new JScrollPane();
->>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 		scrollPane.setBounds(40, 150, 220, 180);
 		getContentPane().add(scrollPane);
 		
 		//PARA QUE LOS JTABLE NO SEAN EDITABLES
 		tablaOperaciones = new JTable();
-<<<<<<< HEAD
 		tablaOperaciones.setBackground(new Color(240, 230, 140));
-=======
->>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 		tablaOperaciones.setModel(new DefaultTableModel(
 			new Object[][] {},
 			new String[] {"OPERACIONES CREADAS"}) {
@@ -176,19 +145,12 @@ public class AdmiOperaciones extends JDialog implements ActionListener {
 			public boolean isCellEditable(int row, int column) {return columnEditables[column];}});
 		scrollPane.setViewportView(tablaOperaciones);
 		
-<<<<<<< HEAD
 		scrollPane_1 = new JScrollPane();
-=======
-		JScrollPane scrollPane_1 = new JScrollPane();
->>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 		scrollPane_1.setBounds(304, 150, 220, 180);
 		getContentPane().add(scrollPane_1);
 		
 		tablaRutas = new JTable();
-<<<<<<< HEAD
 		tablaRutas.setBackground(new Color(240, 230, 140));
-=======
->>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 		tablaRutas.setModel(new DefaultTableModel(
 			new Object[][] {
 			},

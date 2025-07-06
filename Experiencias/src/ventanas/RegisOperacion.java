@@ -21,10 +21,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.awt.event.ActionEvent;
-<<<<<<< HEAD
 import java.awt.Color;
-=======
->>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 
 public class RegisOperacion extends JDialog implements ActionListener {
 
@@ -37,11 +34,8 @@ public class RegisOperacion extends JDialog implements ActionListener {
 	private JButton btnEliminarOperacion;
 	private JComboBox<String> cboOperacion;
 	private JButton btnEliminarTodo;
-<<<<<<< HEAD
 	private JButton btnTablas;
 	private JScrollPane scrollPane;
-=======
->>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 
 	/**
 	 * Launch the application.
@@ -64,10 +58,7 @@ public class RegisOperacion extends JDialog implements ActionListener {
 	 * Create the dialog.
 	 */
 	public RegisOperacion() {
-<<<<<<< HEAD
 		getContentPane().setBackground(new Color(255, 248, 220));
-=======
->>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 		setResizable(false);
 		setTitle("REGISTRAR OPERACIONES");
 		setBounds(100, 100, 630, 400);
@@ -120,28 +111,16 @@ public class RegisOperacion extends JDialog implements ActionListener {
 		cboOperacion.setBounds(110, 23, 130, 22);
 		getContentPane().add(cboOperacion);
 		
-<<<<<<< HEAD
 		scrollPane = new JScrollPane();
-=======
-		JScrollPane scrollPane = new JScrollPane();
->>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 		scrollPane.setBounds(10, 180, 594, 170);
 		getContentPane().add(scrollPane);
 		
 		//LOS JTABLE YA NO SERAN EDITABLES
 		tablaOperaciones = new JTable();
-<<<<<<< HEAD
 		tablaOperaciones.setBackground(new Color(240, 230, 140));
 		tablaOperaciones.setModel(new DefaultTableModel(
 			new Object[][] {},
 			new String[] {"OPERACI\u00D3N", "RUTAS", "UNIDADES", "GL/UNIDAD", "GALONES TOTALES"}) {
-=======
-		tablaOperaciones.setModel(new DefaultTableModel(new Object[][] {},
-		new String[] {"OPERACI\u00D3N", "UNIDADES", "RUTAS", "GL/UNIDAD", "GALONES TOTALES"}) {
-			/**
-			 * 
-			 */
->>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 			private static final long serialVersionUID = 1L;
 			boolean[] columnEditables = new boolean[] {
 				false, false, false, false, false
@@ -150,7 +129,6 @@ public class RegisOperacion extends JDialog implements ActionListener {
 				return columnEditables[column];
 			}
 		});
-<<<<<<< HEAD
 		tablaOperaciones.getColumnModel().getColumn(0).setResizable(false);
 		tablaOperaciones.getColumnModel().getColumn(1).setResizable(false);
 		tablaOperaciones.getColumnModel().getColumn(2).setResizable(false);
@@ -168,18 +146,6 @@ public class RegisOperacion extends JDialog implements ActionListener {
 		btnEliminarOperacion.setBackground(new Color(240, 128, 128));
 		btnEliminarOperacion.addActionListener(this);
 		btnEliminarOperacion.setBounds(357, 67, 140, 25);
-=======
-		scrollPane.setViewportView(tablaOperaciones);
-		
-		btnAñadir = new JButton("Añadir operación");
-		btnAñadir.addActionListener(this);
-		btnAñadir.setBounds(449, 21, 140, 25);
-		getContentPane().add(btnAñadir);
-		
-		btnEliminarOperacion = new JButton("Eliminar operación");
-		btnEliminarOperacion.addActionListener(this);
-		btnEliminarOperacion.setBounds(449, 67, 140, 25);
->>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 		getContentPane().add(btnEliminarOperacion);
 		
 		//CODIGO PARA QUE LOS DATOS DE LOS TXT SEAN LEIDOS POR LOS COMBOBOX
@@ -187,7 +153,6 @@ public class RegisOperacion extends JDialog implements ActionListener {
 		cargarOpcionesDesdeRecurso("datos/Rutas.txt", cboRutas);
 		cargarOpcionesDesdeRecurso("datos/Operaciones.txt", cboOperacion);
 		
-<<<<<<< HEAD
 		btnEliminarTodo = new JButton("Eliminar todo");
 		btnEliminarTodo.addActionListener(this);
 		btnEliminarTodo.setBackground(new Color(240, 128, 128));
@@ -199,12 +164,6 @@ public class RegisOperacion extends JDialog implements ActionListener {
 		btnTablas.addActionListener(this);
 		btnTablas.setBounds(524, 0, 80, 43);
 		getContentPane().add(btnTablas);
-=======
-		btnEliminarTodo = new JButton("Eliminar Todo");
-		btnEliminarTodo.addActionListener(this);
-		btnEliminarTodo.setBounds(449, 114, 140, 25);
-		getContentPane().add(btnEliminarTodo);
->>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 	}
 	//METODO PARA QUE LO QUE ESTE ESCRITO EN LOS TXT SEA BUSCADO Y LEIDO CORRECTAMENTE
 	private void cargarOpcionesDesdeRecurso(String ruta, JComboBox<String> combo) {
@@ -225,12 +184,9 @@ public class RegisOperacion extends JDialog implements ActionListener {
 		if (e.getSource() == btnEliminarTodo) {
 			actionPerformedBtnEliminarTodo(e);
 		}
-<<<<<<< HEAD
 		if (e.getSource() == btnTablas) {
 			actionPerformedBtnTablas(e);
 		}
-=======
->>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 		if (e.getSource() == btnEliminarOperacion) {
 			actionPerformedBtnEliminarOperacion(e);
 		}
@@ -338,7 +294,6 @@ public class RegisOperacion extends JDialog implements ActionListener {
 	            JOptionPane.WARNING_MESSAGE);
 	    }
 	}
-<<<<<<< HEAD
 	protected void actionPerformedBtnTablas(ActionEvent e) {
 	    TablaResumen tr = new TablaResumen();
 	    tr.setLocationRelativeTo(this);
@@ -374,28 +329,5 @@ public class RegisOperacion extends JDialog implements ActionListener {
 	        JOptionPane.showMessageDialog(this, "Todas las operaciones fueron eliminadas con éxito.",
 	                "Confirmación", JOptionPane.INFORMATION_MESSAGE);
 	    }
-=======
-	protected void actionPerformedBtnEliminarTodo(ActionEvent e) {
-		 DefaultTableModel model = (DefaultTableModel) tablaOperaciones.getModel();
-	        
-	        if (model.getRowCount() == 0) {
-	            // No hay filas
-	            JOptionPane.showMessageDialog(this, "No hay filas para eliminar.", 
-	                                          "Aviso", JOptionPane.INFORMATION_MESSAGE);
-	        } else {
-	            // Confirmar antes de eliminar
-	            int respuesta = JOptionPane.showConfirmDialog(this, 
-	                    "¿Está seguro de que desea eliminar todas las filas?", 
-	                    "Confirmar eliminación", 
-	                    JOptionPane.YES_NO_OPTION, 
-	                    JOptionPane.WARNING_MESSAGE);
-	            
-	            if (respuesta == JOptionPane.YES_OPTION) {
-	                model.setRowCount(0);  // Elimina todas las filas
-	                JOptionPane.showMessageDialog(this, "Todas las filas han sido eliminadas.",
-	                                              "Operación exitosa", JOptionPane.INFORMATION_MESSAGE);
-	            }
-	        }
->>>>>>> 3034b0f12cb9d979ab48b15a158b44575bc7c6ee
 	}
 }
