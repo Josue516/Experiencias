@@ -22,6 +22,7 @@ import java.awt.Color;
 
 public class ReporteDescargas extends JDialog implements ActionListener{
 	private static final long serialVersionUID = 1L;
+	private boolean reporteGenerado = false;
 	private JButton btnReporte;
 	private JTable tablaReportes;
 	private JButton btnExportar;
@@ -72,19 +73,19 @@ public class ReporteDescargas extends JDialog implements ActionListener{
 		lblNewLabel.setIcon(new ImageIcon(ReporteConsumos.class.getResource("/imagenes/LogoCarranza.png")));
 		getContentPane().add(lblNewLabel);
 		
-		btnReporte = new JButton("Mostrar Datos en Ventana");
+		btnReporte = new JButton("Mostrar Reporte en Ventana");
 		btnReporte.setBackground(new Color(100, 149, 237));
 		btnReporte.setForeground(new Color(0, 0, 0));
 		btnReporte.addActionListener(this);
 		btnReporte.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnReporte.setBounds(160, 100, 190, 23);
+		btnReporte.setBounds(149, 100, 207, 23);
 		getContentPane().add(btnReporte);
 		
 		btnExportar = new JButton("Exportar Datos a txt");
 		btnExportar.setBackground(new Color(144, 238, 144));
 		btnExportar.addActionListener(this);
 		btnExportar.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnExportar.setBounds(200, 421, 190, 23);
+		btnExportar.setBounds(160, 421, 190, 23);
 		getContentPane().add(btnExportar);
 		
 		scrollPane = new JScrollPane();
@@ -156,7 +157,7 @@ public class ReporteDescargas extends JDialog implements ActionListener{
 		txtPrimax.setColumns(10);
 		txtPrimax.setBounds(373, 390, 129, 20);
 		getContentPane().add(txtPrimax);
-		
+		//btnExportar.setEnabled(false);
 
 	}
 	
@@ -240,10 +241,18 @@ public class ReporteDescargas extends JDialog implements ActionListener{
 	protected void actionPerformedBtnReporte(ActionEvent e) {
 		mostrarReporteDescargas(); // nuevo método
 		btnReporte.setEnabled(false);
-		
+		btnExportar.setEnabled(true);
+		//reporteGenerado = true;
+
 	}
 	
 	 protected void actionPerformedBtnExportar(ActionEvent e) {
+		 if (!reporteGenerado) {
+		        JOptionPane.showMessageDialog(this,
+		            "Primero debe generar un reporte antes de exportar.",
+		            "Atención", JOptionPane.WARNING_MESSAGE);
+		        return;
+		    }
 		 javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
 		    fileChooser.setDialogTitle("Guardar reporte como");
 		    fileChooser.setSelectedFile(new java.io.File("ReporteDescargas.txt")); // nombre sugerido
