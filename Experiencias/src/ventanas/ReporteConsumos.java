@@ -239,9 +239,8 @@ public class ReporteConsumos extends JDialog implements ActionListener {
 	}
 	//BOTON PARA EXPORTAR DATOS A EXCEL
 	protected void actionPerformedBtnExportar(ActionEvent e) {
-		ExportarExcel.exportar();
-		//JOptionPane.showMessageDialog(this, "Archivo Excel exportado exitosamente!", 
-        //        "Éxito", JOptionPane.INFORMATION_MESSAGE);
+		ExportarExcel.exportar(this);
+
 	}
 	protected void actionPerformedBtnActualizar(ActionEvent e) {
 		double Gasolina = Double.parseDouble(txtDisponible.getText());

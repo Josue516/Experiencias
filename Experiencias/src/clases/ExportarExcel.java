@@ -9,7 +9,8 @@ import org.apache.poi.ss.usermodel.IndexedColors;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
+
+import java.awt.Component;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -43,28 +44,31 @@ public class ExportarExcel {
     }
     
     // Método principal para exportar
-    public void exportarDatos() {
+    public boolean exportarDatos() {
+        boolean exportado = false;
+
         try {
             // Leer datos del archivo
             leerDatosDelArchivo();
-            
+
             // Crear el workbook y sheet
             workbook = new XSSFWorkbook();
             sheet = workbook.createSheet("Reporte de Operaciones");
-            
+
             // Crear estilos
             Map<String, CellStyle> estilos = crearEstilos();
-            
+
             // Generar el reporte
             generarReporte(estilos);
-            
+
             // Guardar archivo
-            guardarArchivo();
-            
+            exportado = guardarArchivo(); // <- Importante: saber si se guardó correctamente
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al exportar: " + e.getMessage(), 
                                         "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
+            exportado = false;
         } finally {
             try {
                 if (workbook != null) {
@@ -74,7 +78,10 @@ public class ExportarExcel {
                 e.printStackTrace();
             }
         }
+
+        return exportado;
     }
+
     
     // Leer datos del archivo txt
     private void leerDatosDelArchivo() throws IOException {
@@ -335,37 +342,47 @@ public class ExportarExcel {
     }
     
     // Guardar archivo
-    private void guardarArchivo() throws IOException {
+    private boolean guardarArchivo() {
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Guardar reporte Excel");
-        fileChooser.setFileFilter(new FileNameExtensionFilter("Archivos Excel (*.xlsx)", "xlsx"));
-        
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String fechaHoy = sdf.format(new Date());
-        fileChooser.setSelectedFile(new File("Reporte_Operaciones_" + fechaHoy + ".xlsx"));
-        
-        int result = fileChooser.showSaveDialog(null);
-        if (result == JFileChooser.APPROVE_OPTION) {
-            File file = fileChooser.getSelectedFile();
-            String filePath = file.getAbsolutePath();
-            
+
+        // Generar nombre automático con solo la fecha
+        String nombreArchivo = "reporte_" + obtenerFechaActual() + ".xlsx";
+        fileChooser.setSelectedFile(new File(nombreArchivo));
+
+        int seleccion = fileChooser.showSaveDialog(null);
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            File archivo = fileChooser.getSelectedFile();
+
             // Asegurar extensión .xlsx
-            if (!filePath.toLowerCase().endsWith(".xlsx")) {
-                filePath += ".xlsx";
+            if (!archivo.getName().toLowerCase().endsWith(".xlsx")) {
+                archivo = new File(archivo.getAbsolutePath() + ".xlsx");
             }
-            
-            try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
+
+            try (FileOutputStream fileOut = new FileOutputStream(archivo)) {
                 workbook.write(fileOut);
+                return true;
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "Error al guardar el archivo: " + e.getMessage(), 
+                                              "Error", JOptionPane.ERROR_MESSAGE);
+                e.printStackTrace();
             }
         }
-        
+        return false; // Si se canceló o falló
     }
-    
+    private String obtenerFechaActual() {
+        java.time.LocalDate fecha = java.time.LocalDate.now();
+        return fecha.toString(); // formato: yyyy-MM-dd
+    }
+
     // Método público para usar desde otras clases
-    public static void exportar() {
+    public static void exportar(Component parentComponent) {
         ExportarExcel exporter = new ExportarExcel();
-        exporter.exportarDatos();
-        JOptionPane.showMessageDialog(null, "Archivo Excel exportado exitosamente!", 
-                "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        boolean fueExito = exporter.exportarDatos();
+
+        if (fueExito) {
+            JOptionPane.showMessageDialog(parentComponent, "Archivo Excel exportado exitosamente!", 
+                    "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 }
